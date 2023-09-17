@@ -39,11 +39,6 @@ https://github.com/knnv5h/ES-Fall2023/assets/43922704/5450184b-4fdb-4c9d-b740-23
 ### 程式
 ```C
 // C++ code
-//
-/*
-  This program blinks pin 13 of the Arduino (the
-  built-in LED)
-*/
 
 void setup()
 {
