@@ -1,11 +1,11 @@
 # ES2022 - 實作1: Welcome: GitHub入門, Tinker CAD, digitalWrite(), LED亮滅
 
-## 1-1 在TinkerCAD開一個新的Circuit, 加上一個外部的LED, 並且ON (亮) 0.5秒, OFF(滅) 0.5秒
+ ## 1-1 在TinkerCAD開一個新的Circuit, 加上一個外部的LED, 並且ON (亮) 0.5秒, OFF(滅) 0.5秒
 
+ ### 電路
 ![image](https://github.com/knnv5h/ES-Fall2023/assets/43922704/4002a9cb-5814-4a74-974d-2365d7407a9e)
 
 ### 程式
-
 ```C
 // C++ code
 
@@ -28,7 +28,6 @@ void loop()
 ## 1-2 在TinkerCAD開一個新的Circuit, 分別使甪R, G, B三種顏色的LED, ALL ON (亮) 0.5秒, OFF(滅) 0.5秒
 
 ### 電路
-
 https://github.com/knnv5h/ES-Fall2023/assets/43922704/5450184b-4fdb-4c9d-b740-2368d442f371
 
 ### 程式
