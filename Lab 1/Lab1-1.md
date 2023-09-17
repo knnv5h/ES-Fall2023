@@ -34,6 +34,8 @@ void loop()
 
 ### 電路
 
+https://github.com/knnv5h/ES-Fall2023/assets/43922704/5450184b-4fdb-4c9d-b740-2368d442f371
+
 ### 程式
 ```
 // C++ code
