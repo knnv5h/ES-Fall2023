@@ -22,11 +22,11 @@ void loop()
   digitalWrite(13, HIGH);
   digitalWrite(11, HIGH);
   digitalWrite(9, HIGH);
-  delay(500); // Wait for 1000 millisecond(s)
+  delay(500);
   // turn the LED off by making the voltage LOW
   digitalWrite(13, LOW);
   digitalWrite(11, LOW);
   digitalWrite(9, LOW);
-  delay(500); // Wait for 1000 millisecond(s)
+  delay(500);
 }
 ```
