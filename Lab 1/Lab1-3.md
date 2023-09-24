@@ -4,11 +4,7 @@
 
 ### 電路
 
-
-
 https://github.com/knnv5h/ES-Fall2023/assets/43922704/6f859317-af71-4c43-99ba-c48b79edf905
-
-
 
 ### 程式
 ```C
