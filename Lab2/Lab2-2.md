@@ -4,7 +4,8 @@
 
 ### 電路
 
-https://github.com/knnv5h/ES-Fall2023/assets/43922704/68be08b6-4bef-4d77-bcaa-8f630ecad313
+https://github.com/knnv5h/ES-Fall2023/assets/43922704/ac7eb0cc-f29f-4a22-9f36-8c69c845accc
+
 ### 程式
 ```C
 const int Red = 9;
@@ -36,4 +37,4 @@ void loop()
   analogWrite(Blue, 255);
   delay(1000); // Wait for 1000 millisecond(s)  
 }
-```C
+```
