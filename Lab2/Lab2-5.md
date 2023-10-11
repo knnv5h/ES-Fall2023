@@ -4,7 +4,7 @@
 
 ### 電路
 
-https://github.com/knnv5h/ES-Fall2023/assets/43922704/57f5abdd-ee55-447d-8768-7138a032bd6e
+https://github.com/knnv5h/ES-Fall2023/assets/43922704/3a6cf80e-00cf-48db-ad17-001faee474de
 
 ### 程式
 ```C
