@@ -4,7 +4,7 @@
 
 ### 電路
 
-https://github.com/knnv5h/ES-Fall2023/assets/43922704/ffa2b1af-c0c3-492f-bd2a-ab4b2b3369d1
+https://github.com/knnv5h/ES-Fall2023/assets/43922704/55c7a5d3-e512-4640-858e-b0743a81c9f8
 
 ### 程式
 
@@ -42,18 +42,30 @@ void loop()
   // measure the ping time in cm
   int cm = 0.01723 * readUltrasonicDistance(7, 7);
   
-  // 根據距離改變LED顏色
+  // 根據距離改變LED顏色，形成漸層變化
+  int red, green, blue;
   if (cm < 70) {
-    setColor(255, 0, 0); // 紅色
+    red = 255;
+    green = 0;
+    blue = 0;
   } else if (cm > 270) {
-    setColor(0, 0, 255); // 藍色
+    red = 0;
+    green = 0;
+    blue = 255;
   } else {
-    setColor(0, 255, 0); // 綠色
+    // 計算漸層變化的顏色值
+    int range = 270 - 70;
+    int step = 255 / range;
+    int intensity = (cm - 70) * step;
+    red = 255 - intensity;
+    green = intensity;
+    blue = 0;
   }
 
+  setColor(red, green, blue);
   Serial.print(cm);
   Serial.println("cm");
-  delay(100); // Wait for 100 millisecond(s)
+  delay(100); // 等待100毫秒
 }
 
 void setColor(int red, int green, int blue) {
