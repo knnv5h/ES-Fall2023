@@ -4,8 +4,10 @@
 
 ### 電路
 
-https://github.com/knnv5h/ES-Fall2023/assets/43922704/1cfd6de5-f485-4a24-bd07-daf23a4c3c69
+https://github.com/knnv5h/ES-Fall2023/assets/43922704/ffa2b1af-c0c3-492f-bd2a-ab4b2b3369d1
+
 ### 程式
+
 ```C
 // C++ code
 #include <Adafruit_NeoPixel.h>
