@@ -31,23 +31,14 @@ void loop() {
   }
   pixels.show();
 
-  // 逐漸點亮綠色 LED
-  for (int brightness = 0; brightness <= 255; brightness++) {
-    for (int k = 6; k < NUMPIXELS; k++) {
-      pixels.setPixelColor(k, pixels.Color(0, brightness, 0));  // 綠色，逐漸變亮
-    }
-    pixels.show();
-    delay(10); // 調整亮度變化速度
-  }
-
   // 印出1x1到9x9的乘法表
   for (int i = 1; i <= 9; i++) {
     int aa = 0;
 
     for (int j = 1; j <= 9; j++) {
       int result = i * j;
-      String d1 = String(i) + "x" + String(j) + "=" + String(result);
-      Serial.println(d1);
+      String d1 = String(i) + "x" + String(j) + "=" + String(result)+" ";
+      Serial.print(d1);
 
       for (int k = 6; k < NUMPIXELS; k++) {
         int brightness = map(aa, 0, 9, 0, 255);  // 映射亮度從0到255
@@ -58,7 +49,8 @@ void loop() {
       }
       delay(100);
     }  // loop j
-    Serial.println("");
+    Serial.println(" ");
+	Serial.println(" ");
   }  // loop i
 
   // 關閉紅色 LED
