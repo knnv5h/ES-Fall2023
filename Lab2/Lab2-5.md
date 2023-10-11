@@ -8,36 +8,43 @@ https://github.com/knnv5h/ES-Fall2023/assets/43922704/34f27d4b-fb7c-498d-ba56-7b
 
 ### 程式
 ```C
+// 定義按鈕和LED的腳位
+const int buttonPin = 2;  // 按鈕接腳
+const int ledPins[] = {7, 8, 13};  // LED 接腳（可以有多個LED）
+
+// 變數來追蹤按鈕狀態和目前亮著的LED的索引
 int buttonState = 0;
-int GLED = 13;
-int RLED = 8;
-void setup()
-{
-  pinMode(2, INPUT);
+int lastButtonState = 0;
+int currentLed = 0;
+
+void setup() {
+  // 設定按鈕接腳為輸入
+  pinMode(buttonPin, INPUT);
   
-  pinMode(GLED, OUTPUT);
-  pinMode(RLED, OUTPUT);
-  
-  Serial.begin(9600);
+  // 設定LED接腳為輸出
+  for (int i = 0; i < 3; i++) {
+    pinMode(ledPins[i], OUTPUT);
+  }
 }
 
-void loop()
-{
-  // read the state of the pushbutton value
-  buttonState = digitalRead(2);
-  // check if pushbutton is pressed.  if it is, the
-  // buttonState is HIGH
-  if (buttonState == HIGH) {
-    // turn LED on
-    digitalWrite(GLED, HIGH);
-    digitalWrite(RLED, LOW);
+void loop() {
+  // 讀取按鈕狀態
+  buttonState = digitalRead(buttonPin);
+
+  // 檢查按鈕是否被按下（偵測到上升沿）
+  if (buttonState == HIGH && lastButtonState == LOW) {
+    // 關閉目前亮著的LED
+    digitalWrite(ledPins[currentLed], LOW);
     
-  } else {
-    // turn LED off
-    digitalWrite(GLED, LOW);
-    digitalWrite(RLED, HIGH);
+    // 將currentLed移至下一個LED（形成循環）
+    currentLed = (currentLed + 1) % 3;
+
+    // 開啟下一個LED
+    digitalWrite(ledPins[currentLed], HIGH);
   }
-  Serial.println(buttonState);
-  delay(10); // Delay a little bit to improve simulation performance
+
+  // 更新按鈕狀態
+  lastButtonState = buttonState;
 }
+
 ```
