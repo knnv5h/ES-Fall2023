@@ -8,43 +8,69 @@ https://github.com/knnv5h/ES-Fall2023/assets/43922704/57f5abdd-ee55-447d-8768-71
 
 ### 程式
 ```C
-// 定義按鈕和LED的腳位
-const int buttonPin = 2;  // 按鈕接腳
-const int ledPins[] = {7, 8, 13};  // LED 接腳（可以有多個LED）
+#include <Adafruit_NeoPixel.h>
 
-// 變數來追蹤按鈕狀態和目前亮著的LED的索引
+const int buttonPin = 2;
+const int ledPins[] = {7, 8, 13};
+const int neoPixelPin = 3;  // NeoPixel Jewel的接腳
+const int numberOfPixels = 7;  // NeoPixel Jewel上LED的數量
+
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(numberOfPixels, neoPixelPin, NEO_GRB + NEO_KHZ800);
+
 int buttonState = 0;
 int lastButtonState = 0;
 int currentLed = 0;
 
 void setup() {
-  // 設定按鈕接腳為輸入
   pinMode(buttonPin, INPUT);
-  
-  // 設定LED接腳為輸出
   for (int i = 0; i < 3; i++) {
     pinMode(ledPins[i], OUTPUT);
   }
+  pixels.begin();  // 初始化NeoPixel Jewel
 }
 
 void loop() {
-  // 讀取按鈕狀態
-  buttonState = digitalRead(buttonPin);
-
-  // 檢查按鈕是否被按下（偵測到上升沿）
-  if (buttonState == HIGH && lastButtonState == LOW) {
-    // 關閉目前亮著的LED
-    digitalWrite(ledPins[currentLed], LOW);
-    
-    // 將currentLed移至下一個LED（形成循環）
-    currentLed = (currentLed + 1) % 3;
-
-    // 開啟下一個LED
-    digitalWrite(ledPins[currentLed], HIGH);
-  }
-
-  // 更新按鈕狀態
-  lastButtonState = buttonState;
+	cycleLedsWithButton();
+	lastButtonState = buttonState;
 }
 
+void cycleLedsWithButton(){
+	buttonState = digitalRead(buttonPin);
+    if (buttonState == HIGH && lastButtonState == LOW) {
+      digitalWrite(ledPins[currentLed], LOW);
+      pixels.clear();  // 關閉所有NeoPixel LED
+      pixels.show();
+      
+      currentLed = (currentLed + 1) % 3;
+
+      digitalWrite(ledPins[currentLed], HIGH);
+      if (currentLed == 0) {
+        // 第7腳亮時，NeoPixel Jewel用藍色快速繞圓圈動畫
+        for (int i = 1; i < 500; i++){
+          colorWipe(0x0000FF, 100);
+        }
+      } else if (currentLed == 1) {
+        // 第8腳亮時，NeoPixel Jewel用紅色快速繞圓圈動畫
+        for (int i = 1; i < 500; i++){
+          colorWipe(0xFF0000, 100);
+        }
+      } else if (currentLed == 2) {
+        // 第13腳亮時，NeoPixel Jewel用綠色快速繞圓圈動畫
+        for (int i = 1; i < 500; i++){
+          colorWipe(0x00FF00, 100);
+        }  
+      }
+    }
+}
+
+void colorWipe(uint32_t color, int wait) {
+  for (int i = 1; i < pixels.numPixels(); i++) {
+    pixels.setPixelColor(i, color);
+    pixels.show();
+    delay(wait);
+    pixels.setPixelColor(i, 0);
+	cycleLedsWithButton();
+    delay(100);  // 延遲0.1秒，讓繞圈動畫顯示一段時間
+  }
+}
 ```
