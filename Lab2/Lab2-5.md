@@ -8,73 +8,70 @@ https://github.com/knnv5h/ES-Fall2023/assets/43922704/3a6cf80e-00cf-48db-ad17-00
 
 ### 程式
 ```C
-int numbers[10][8] = {
-  {1, 1, 1, 1, 1, 1, 0, 1}, // 0
-  {0, 1, 1, 0, 0, 0, 0, 1}, // 1
-  {1, 1, 0, 1, 1, 0, 1, 1}, // 2
-  {1, 1, 1, 1, 0, 0, 1, 1}, // 3
-  {0, 1, 1, 0, 0, 1, 1, 1}, // 4
-  {1, 0, 1, 1, 0, 1, 1, 1}, // 5
-  {1, 0, 1, 1, 1, 1, 1, 1}, // 6
-  {1, 1, 1, 0, 0, 0, 0, 1}, // 7
-  {1, 1, 1, 1, 1, 1, 1, 1}, // 8
-  {1, 1, 1, 1, 0, 1, 1, 1}  // 9
-};
+#include <Adafruit_NeoPixel.h>
 
-int redPin = 9;    // 紅色LED的腳位
-int greenPin = 10;  // 綠色LED的腳位
-int bluePin = 11;   // 藍色LED的腳位
-int interval = 500; // 閃爍間隔，以毫秒為單位
+const int buttonPin = 2;
+const int ledPins[] = {7, 8, 13};
+const int neoPixelPin = 3;  // NeoPixel Jewel的接腳
+const int numberOfPixels = 7;  // NeoPixel Jewel上LED的數量
 
-void seg71(int* number)
-{
-  for(int i = 0; i < 8; i++) {
-    digitalWrite(i + 1, number[i]);
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(numberOfPixels, neoPixelPin, NEO_GRB + NEO_KHZ800);
+
+int buttonState = 0;
+int lastButtonState = 0;
+int currentLed = 0;
+
+void setup() {
+  pinMode(buttonPin, INPUT);
+  for (int i = 0; i < 3; i++) {
+    pinMode(ledPins[i], OUTPUT);
   }
-  delay(1000);
+  pixels.begin();  // 初始化NeoPixel Jewel
 }
-void seg()
-{
-  for(int i = 1; i <= 9; i++) {
-    seg71(numbers[i]);
+
+void loop() {
+	cycleLedsWithButton();
+	lastButtonState = buttonState;
+}
+
+void cycleLedsWithButton(){
+	buttonState = digitalRead(buttonPin);
+    if (buttonState == HIGH && lastButtonState == LOW) {
+      digitalWrite(ledPins[currentLed], LOW);
+      pixels.clear();  // 關閉所有NeoPixel LED
+      pixels.show();
+      
+      currentLed = (currentLed + 1) % 3;
+
+      digitalWrite(ledPins[currentLed], HIGH);
+      if (currentLed == 0) {
+        // 第7腳亮時，NeoPixel Jewel用藍色快速繞圓圈動畫
+        for (int i = 1; i < 500; i++){
+          colorWipe(0x0000FF, 100);
+        }
+      } else if (currentLed == 1) {
+        // 第8腳亮時，NeoPixel Jewel用紅色快速繞圓圈動畫
+        for (int i = 1; i < 500; i++){
+          colorWipe(0xFF0000, 100);
+        }
+      } else if (currentLed == 2) {
+        // 第13腳亮時，NeoPixel Jewel用綠色快速繞圓圈動畫
+        for (int i = 1; i < 500; i++){
+          colorWipe(0x00FF00, 100);
+        }  
+      }
+    }
+}
+
+void colorWipe(uint32_t color, int wait) {
+  for (int i = 1; i < pixels.numPixels(); i++) {
+    pixels.setPixelColor(i, color);
+    pixels.show();
+    delay(wait);
+    pixels.setPixelColor(i, 0);
+	cycleLedsWithButton();
+    delay(100);  // 延遲0.1秒，讓繞圈動畫顯示一段時間
   }
-  seg71(numbers[0]); // 0
 }
 
-void LED()
-{
-  analogWrite(redPin, 255);
-  delay(interval);
-  analogWrite(redPin, 0);
-  analogWrite(greenPin, 255);
-  delay(interval);
-  analogWrite(greenPin, 0);
-  analogWrite(bluePin, 255);
-  delay(interval);
-  analogWrite(bluePin, 0);
-}
-
-
-// 設定LED的顏色
-void setColor(int red, int green, int blue) {
-  analogWrite(redPin, red);
-  analogWrite(greenPin, green);
-  analogWrite(bluePin, blue);
-}
-
-void setup()
-{
-  for(int x = 1; x < 9; x++) {
-    pinMode(x, OUTPUT);
-  }
-  pinMode(redPin, OUTPUT);
-  pinMode(greenPin, OUTPUT);
-  pinMode(bluePin, OUTPUT);
-}
-
-void loop()
-{
-  LED();
-  seg();
-}
 ```
