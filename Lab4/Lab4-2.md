@@ -19,10 +19,11 @@ int numbers[10][8] = {
   {1, 1, 1, 1, 1, 1, 1, 1}, // 8
   {1, 1, 1, 1, 0, 1, 1, 1}  // 9
 };
+
 int redPin = 9;    // 紅色LED的腳位
 int greenPin = 10;  // 綠色LED的腳位
 int bluePin = 11;   // 藍色LED的腳位
-int delayTime = 10; // 延遲時間，控制顏色變換的速度
+int interval = 500; // 閃爍間隔，以毫秒為單位
 
 void seg71(int* number)
 {
@@ -31,22 +32,27 @@ void seg71(int* number)
   }
   delay(1000);
 }
-
-void rainbowCycle() {
-  byte i;
-  for(i = 0; i < 255; i++) {
-    setColor(255 - i, i, 0); // 紅->黃
-    delay(delayTime);
+void seg()
+{
+  for(int i = 1; i <= 9; i++) {
+    seg71(numbers[i]);
   }
-  for(i = 0; i < 255; i++) {
-    setColor(0, 255 - i, i); // 黃->綠
-    delay(delayTime);
-  }
-  for(i = 0; i < 255; i++) {
-    setColor(i, 0, 255 - i); // 綠->藍
-    delay(delayTime);
-  }
+  seg71(numbers[0]); // 0
 }
+
+void LED()
+{
+  analogWrite(redPin, 255);
+  delay(interval);
+  analogWrite(redPin, 0);
+  analogWrite(greenPin, 255);
+  delay(interval);
+  analogWrite(greenPin, 0);
+  analogWrite(bluePin, 255);
+  delay(interval);
+  analogWrite(bluePin, 0);
+}
+
 
 // 設定LED的顏色
 void setColor(int red, int green, int blue) {
@@ -67,10 +73,7 @@ void setup()
 
 void loop()
 {
-  for(int i = 1; i <= 9; i++) {
-    seg71(numbers[i]);
-  }
-  seg71(numbers[0]); // 0
-  rainbowCycle();
+  LED();
+  seg();
 }
 ```
