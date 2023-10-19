@@ -7,6 +7,56 @@
 
 ### 程式
 ```C
+#include <Adafruit_NeoPixel.h>
+
+// 設定 neopixel ring 的引腳和數量
+#define NEOPIXEL_RING_24_PIN A0
+#define NEOPIXEL_RING_24_NUM 24
+#define NEOPIXEL_RING_16_PIN A1
+#define NEOPIXEL_RING_16_NUM 16
+#define NEOPIXEL_JEWEL_PIN A2
+#define NEOPIXEL_JEWEL_NUM 8
+
+// 設定 neopixel ring 的物件
+Adafruit_NeoPixel neopixel_ring_24 = Adafruit_NeoPixel(NEOPIXEL_RING_24_NUM, NEOPIXEL_RING_24_PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel neopixel_ring_16 = Adafruit_NeoPixel(NEOPIXEL_RING_16_NUM, NEOPIXEL_RING_16_PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel neopixel_jewel = Adafruit_NeoPixel(NEOPIXEL_JEWEL_NUM, NEOPIXEL_JEWEL_PIN, NEO_GRB + NEO_KHZ800);
+
+// 設定動畫的顏色
+const uint32_t color_1 = Adafruit_NeoPixel::Color(255, 0, 0);
+const uint32_t color_2 = Adafruit_NeoPixel::Color(0, 255, 0);
+const uint32_t color_3 = Adafruit_NeoPixel::Color(0, 0, 255);
+
+// 動畫函式
+void animation() {
+  // 將 neopixel ring 24 填滿顏色 1
+  for (int i = 0; i < NEOPIXEL_RING_24_NUM; i++) {
+    neopixel_ring_24.setPixelColor(i, color_1);
+  }
+  neopixel_ring_24.show();
+  delay(500);
+  neopixel_ring_24.fill(Adafruit_NeoPixel::Color(0, 0, 0));
+  neopixel_ring_24.show();
+
+  // 將 neopixel ring 16 填滿顏色 2
+  for (int i = 0; i < NEOPIXEL_RING_16_NUM; i++) {
+    neopixel_ring_16.setPixelColor(i, color_2);
+  }
+  neopixel_ring_16.show();
+  delay(500);
+  neopixel_ring_16.fill(Adafruit_NeoPixel::Color(0, 0, 0));
+  neopixel_ring_16.show();
+
+  // 將 neopixel jewel 填滿顏色 3
+  for (int i = 0; i < NEOPIXEL_JEWEL_NUM; i++) {
+    neopixel_jewel.setPixelColor(i, color_3);
+  }
+  neopixel_jewel.show();
+  delay(500);
+  neopixel_jewel.fill(Adafruit_NeoPixel::Color(0, 0, 0));
+  neopixel_jewel.show();
+}
+
 int numbers[10][8] = {
   {1, 1, 1, 1, 1, 1, 0, 1}, // 0
   {0, 1, 1, 0, 0, 0, 0, 1}, // 1
@@ -36,6 +86,8 @@ void seg()
 {
   for(int i = 1; i <= 9; i++) {
     seg71(numbers[i]);
+	animation();
+	LED();
   }
   seg71(numbers[0]); // 0
 }
@@ -69,11 +121,17 @@ void setup()
   pinMode(redPin, OUTPUT);
   pinMode(greenPin, OUTPUT);
   pinMode(bluePin, OUTPUT);
+    // 初始化 neopixel ring
+  pinMode(A0, OUTPUT);
+  pinMode(A1, OUTPUT);
+  pinMode(A2, OUTPUT);
+  neopixel_ring_24.begin();
+  neopixel_ring_16.begin();
+  neopixel_jewel.begin();
 }
 
 void loop()
 {
-  LED();
   seg();
 }
 ```
