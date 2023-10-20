@@ -7,14 +7,14 @@
 
 ### 程式
 ```C
-#include <LiquidCrystal.h>
-#include <Keypad.h>
+#include <LiquidCrystal.h>  // 引入LiquidCrystal庫，用於控制LCD顯示器
+#include <Keypad.h>        // 引入Keypad庫，用於讀取鍵盤輸入
 
 LiquidCrystal lcd_1(12, 11, 5, 4, 3, 2);  // 定義LCD物件，輸入引腳為12, 11, 5, 4, 3, 2
 
-const byte ROWS = 4;  // 鍵盤的列數(橫的)
-const byte COLS = 4;  // 鍵盤的行數(直的)
-char keys[ROWS][COLS] = {  // 鍵盤的按鍵配置
+const byte ROWS = 4;  // 定義鍵盤的列數(橫的)
+const byte COLS = 4;  // 定義鍵盤的行數(直的)
+char keys[ROWS][COLS] = {  // 定義鍵盤的按鍵配置
   {'1','2','3','A'},
   {'4','5','6','B'},
   {'7','8','9','C'},
@@ -27,7 +27,7 @@ byte colPins[COLS] = {9, 8, 7, 6};  // 定義鍵盤的行的腳位
 int LCDCol = 0;  // LCD的列位置
 int LCDRow = 0;  // LCD的行位置
 
-Keypad keypad = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS );  // 定義鍵盤物件
+Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);  // 定義鍵盤物件，設定按鍵映射和腳位
 
 void setup() {
    Serial.begin(9600);  // 初始化串口通信，波特率9600
@@ -40,22 +40,19 @@ void loop() {
 
   if (key) {  // 如果有按鍵輸入
     Serial.println(key);  // 將按鍵值輸出到串口
-  
-    if (LCDCol > 15) {  // 如果LCD的列位置超出範圍
-      ++LCDRow;  // 將LCD的行位置增加
-    
-      if (LCDRow > 1) {  // 如果LCD的行位置超出範圍
-        LCDRow = 0;  // 重置LCD的行位置
-        LCDCol = 0;  // 重置LCD的列位置
-        lcd_1.clear();  // 清除LCD上的內容
-      }
-    
-      LCDCol = 0;  // 重置LCD的列位置
-    }
-  
     lcd_1.setCursor(LCDCol, LCDRow);  // 設定LCD的位置
     lcd_1.print(key);  // 在LCD上顯示按鍵值
     ++LCDCol;  // 將LCD的列位置增加
+    
+    if (LCDCol > 16) {  // 如果LCD的列位置超出範圍
+      ++LCDRow;  // 將LCD的行位置增加
+      LCDCol = 0;  // 重置LCD的列位置
+      
+      if (LCDRow > 1) {  // 如果LCD的行位置超出範圍
+        LCDRow = 0;  // 重置LCD的行位置
+        lcd_1.clear();  // 清除LCD上的內容
+      }
+    }
   }
 }
 ```
