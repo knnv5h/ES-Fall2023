@@ -41,3 +41,22 @@ for i in range(1, 4):  # 外層迴圈控制第一個數字（1到3）
         result = i * j  # 計算乘法結果
         print(f"{i} X {j} = {result}")  # 印出乘法表達式和結果
 ```
+
+### 輸出
+
+![螢幕擷取畫面 2023-10-21 214333](https://github.com/knnv5h/ES-Fall2023/assets/43922704/327f9c92-05e2-4318-a9d8-a82bad69e1ed)
+
+### 程式
+``` python
+def even_numbers(n):
+    # 使用列表生成式生成被2整除的正整數清單
+    even_list = [num for num in range(2, n+1) if num % 2 == 0]
+    return even_list
+
+# 讓使用者輸入數字
+n = int(input("請輸入一個正整數："))
+
+# 呼叫函式並印出結果
+result = even_numbers(n)
+print(result)
+```
