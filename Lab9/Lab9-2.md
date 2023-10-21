@@ -2,11 +2,12 @@
 
 ## Lab 9-2 實作練習 & Python的5個回顧練習, 1W
 
-### 輸出
+### Python的5個回顧練習
+#### 輸出
 
 ![螢幕擷取畫面 2023-10-21 212921](https://github.com/knnv5h/ES-Fall2023/assets/43922704/8111e3d1-10cb-42a6-8647-a3b9a77ff5f2)
 
-### 程式
+#### 程式
 ``` python
 for i in range(1, 10):
     print('*' * i)
