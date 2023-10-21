@@ -29,3 +29,15 @@ for i in range(9,29,2):
 for i in range(32,4,-2):
     print(i-2)
 ```
+
+### 輸出
+
+![螢幕擷取畫面 2023-10-21 213820](https://github.com/knnv5h/ES-Fall2023/assets/43922704/c83d3b17-429e-44f8-85dc-e3fb4d179e70)
+
+### 程式
+``` python
+for i in range(1, 4):  # 外層迴圈控制第一個數字（1到3）
+    for j in range(1, 4):  # 內層迴圈控制第二個數字（1到3）
+        result = i * j  # 計算乘法結果
+        print(f"{i} X {j} = {result}")  # 印出乘法表達式和結果
+```
