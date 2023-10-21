@@ -1,6 +1,7 @@
 # ES2023 - 實作8: 零基礎Python快速入門與實作 (2W) 
 
 ## Lab 8-3 建立新的Colab Notebook (e.g., Filename: ShowPhoto.ipynb), 用Python來Show一下圖像
+### 輸出
 
 ![螢幕擷取畫面 2023-10-21 210838](https://github.com/knnv5h/ES-Fall2023/assets/43922704/afbbc263-caff-4b9c-8519-be79f9e43fc5)
 
