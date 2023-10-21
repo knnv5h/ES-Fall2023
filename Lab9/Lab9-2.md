@@ -20,3 +20,12 @@ for i in range(1, 10):
 for i in range(9,29,2):
     print(2+i)
 ```
+### 輸出
+
+![螢幕擷取畫面 2023-10-21 213548](https://github.com/knnv5h/ES-Fall2023/assets/43922704/4c905f78-e10e-435f-9720-bee0a5d259b5)
+
+### 程式
+``` python
+for i in range(32,4,-2):
+    print(i-2)
+```
