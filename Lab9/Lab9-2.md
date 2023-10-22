@@ -394,3 +394,4 @@ n = int(input("請輸入一個正整數："))
 result = even_numbers(n)
 print(result)
 ```
+[回目錄](https://github.com/knnv5h/ES-Fall2023/blob/main/Lab9/Lab9-2.md#目錄)
