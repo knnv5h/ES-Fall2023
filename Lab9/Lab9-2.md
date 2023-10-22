@@ -166,6 +166,7 @@ for i, item in enumerate(top_5):
 
 show_image(image, '')
 ```
+
 [回目錄](https://github.com/knnv5h/ES-Fall2023/blob/main/Lab9/Lab9-2.md#目錄)<br>
 
 ### 實作2: 從網路上找3張自己喜歡的照片來試試看 (jpg/png)
@@ -331,6 +332,8 @@ for i, item in enumerate(top_5):
 
 show_image(image, '')
 ```
+[回目錄](https://github.com/knnv5h/ES-Fall2023/blob/main/Lab9/Lab9-2.md#目錄)<br>
+
 ### Python的5個回顧練習
 
 #### 輸出
