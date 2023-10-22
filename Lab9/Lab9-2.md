@@ -1,6 +1,6 @@
 # ES2023 - 實作9: AI起手式之圖像分類實作(2W)
 ## 目錄
-[實作1](https://github.com/knnv5h/ES-Fall2023/blob/main/Lab9/Lab9-2.md#%E5%AF%A6%E4%BD%9C1-%E5%BE%9E%E5%B7%B2%E6%8F%90%E4%BE%9B%E7%9A%84%E9%81%B8%E9%A0%85%E4%B8%AD%E6%89%BE1%E5%BC%B5%E8%87%AA%E5%B7%B1%E5%96%9C%E6%AD%A1%E7%9A%84%E7%85%A7%E7%89%87%E4%BE%86%E8%A9%A6%E8%A9%A6%E7%9C%8B)
+[實作1](https://github.com/knnv5h/ES-Fall2023/blob/main/Lab9/Lab9-2.md#https://github.com/knnv5h/ES-Fall2023/blob/main/Lab9/Lab9-2.md#實作1-從已提供的選項中找1張自己喜歡的照片來試試看)
 ## Lab 9-2 實作練習 & Python的5個回顧練習, 1W
 
 ### 實作1: 從已提供的選項中,找1張自己喜歡的照片來試試看
