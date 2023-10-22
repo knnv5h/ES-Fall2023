@@ -3,7 +3,7 @@
 
 ### 輸出
 
-![螢幕擷取畫面 2023-10-22 211007](https://github.com/knnv5h/ES-Fall2023/assets/43922704/3dfe1398-57ae-4351-b744-44def36955a9)
+![螢幕擷取畫面 2023-10-22 222124](https://github.com/knnv5h/ES-Fall2023/assets/43922704/48a36cf8-23c8-4ca4-9969-5065d4da3714)
 
 ### 程式
 ``` python
