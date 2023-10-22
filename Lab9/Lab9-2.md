@@ -307,7 +307,7 @@ images_for_test_map = {
 img_url = images_for_test_map[image_name]
 image, original_image = load_image(img_url, image_size, dynamic_size, max_dynamic_size)
 
-#實作1: 從已提供的選項中,找1張自己喜歡的照片來試試看
+#實作2: 從網路上找3張自己喜歡的照片來試試看 (jpg/png)
 # %time
 classifier = hub.load(model_handle)
 probabilities = tf.nn.softmax(classifier(image)).numpy()
