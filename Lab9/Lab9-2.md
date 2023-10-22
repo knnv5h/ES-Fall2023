@@ -2,6 +2,7 @@
 ## 目錄
 [實作1](https://github.com/knnv5h/ES-Fall2023/blob/main/Lab9/Lab9-2.md#https://github.com/knnv5h/ES-Fall2023/blob/main/Lab9/Lab9-2.md#實作1-從已提供的選項中找1張自己喜歡的照片來試試看)<br>
 [實作2](https://github.com/knnv5h/ES-Fall2023/blob/main/Lab9/Lab9-2.md#實作2-從網路上找3張自己喜歡的照片來試試看-jpgpng)<br>
+[python的5個回顧練習](https://github.com/knnv5h/ES-Fall2023/blob/main/Lab9/Lab9-2.md#python的5個回顧練習)
 ## Lab 9-2 實作練習 & Python的5個回顧練習, 1W
 
 ### 實作1: 從已提供的選項中,找1張自己喜歡的照片來試試看
